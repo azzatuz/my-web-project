@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan DOM Manipulation</title>
+    <style>
+        /* Gaya CSS untuk elemen-elemen */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            color: #333;
+        }
+
+        body {
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #333;
+            padding: 10px;
+        }
+
+        div {
+            border: 2px solid #dedede;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        p {
+            border: 1px solid #aaa;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            list-style-type: disc;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="hl">Judul</h1>
+
+    <div id="container1">
+        <section id="a">
+            <p id="par1">Paragraf 1</p>
+            <p id="par2">Paragraf 2</p>
+            <a href="#" id="link">Link</a>
+        </section>
+    </div>
+
+    <div id="container2">
+        <ul>
+            <li class="list">List 1</li>
+            <li class="list">List 2</li>
+            <li class="list">List 3</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript untuk memanipulasi elemen -->
+    <script>
+        // Menyeleksi elemen berdasarkan id atau class
+        const title = document.getElementById('hl'); // Judul
+        const paragraf1 = document.getElementById('par1'); // Paragraf 1
+        const paragraf2 = document.getElementById('par2'); // Paragraf 2
+        const link = document.getElementById('link'); // Tautan
+        const listItems = document.querySelectorAll('.list'); // Daftar items
+
+        // 1. Mengubah warna latar belakang div
+        document.getElementById('container1').style.backgroundColor = 'lightblue';
+        document.getElementById('container2').style.backgroundColor = 'lightgreen';
+
+        // 2. Mengubah atribut href pada <a> menjadi Google
+        link.setAttribute('href', 'https://www.google.com');
+
+        // 3. Menggunakan loop untuk memanipulasi teks, gaya, ukuran, dan warna latar belakang
+        listItems.forEach((item, index) => {
+            // Mengubah teks setiap item list (tetapi tidak menampilkannya)
+            item.setAttribute('data-original', item.innerHTML);
+            item.innerHTML = `List ${index + 1} `;
+            
+            // Mengubah warna latar belakang dan ukuran font
+            item.style.backgroundColor = 'yellow';
+            item.style.fontSize = '18px';
+            item.style.fontStyle = 'italic';
+        });
+
+        // 4. Mengubah teks pada paragraf (tetapi tidak menampilkannya)
+        paragraf1.setAttribute('data-original', paragraf1.innerHTML);
+        paragraf2.setAttribute('data-original', paragraf2.innerHTML);
+
+        paragraf1.innerHTML = 'Paragraf 1 ';
+        paragraf2.innerHTML = 'Paragraf 2 ';
+
+        // 5. Menambahkan border pada judul
+        title.style.border = '2px solid red';
+
+        // Mengecek hasil perubahan di konsol
+        console.log(title);
+        console.log(paragraf1);
+        console.log(paragraf2);
+        console.log(link);
+        console.log(listItems);
+    </script>
+</body>
+
+</html>
